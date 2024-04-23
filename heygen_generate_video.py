@@ -10,7 +10,7 @@ headers = {
 }
 
 data = {  
-    "video_inputs": [  
+    "video_inputs": [
         {  
             "character": {  
                 "type": "avatar",  
@@ -20,7 +20,7 @@ data = {
             "voice": {
                 "type": "text",
                 "input_text": "Welcome to the HeyGen API",
-                "voice_id": "2d5b0e6cf36f460aa7fc47e3eee4b54"
+                "voice_id": "2d5b0e6cf36f460aa7fc47e3eee4ba54"
             },
             "background": {
                 "type": "color",

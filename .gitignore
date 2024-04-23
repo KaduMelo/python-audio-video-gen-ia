@@ -2,6 +2,8 @@ __pycache__/
 
 *.mp3
 
+*.mp4
+
 audio-video-env/
 
 audios/
