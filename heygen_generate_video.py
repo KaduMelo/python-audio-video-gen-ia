@@ -9,33 +9,37 @@ headers = {
     "x-api-key": os.getenv("HEYGEN_API_KEY"),  
 }
 
-data = {  
-    "video_inputs": [
-        {  
-            "character": {  
-                "type": "avatar",  
-                "avatar_id": "Daisy-inskirt-20220818",
-                "avatar_style": "normal",  
-            },  
-            "voice": {
-                "type": "text",
-                "input_text": "Welcome to the HeyGen API",
-                "voice_id": "2d5b0e6cf36f460aa7fc47e3eee4ba54"
-            },
-            "background": {
-                "type": "color",
-                "value": "#008000"
-            }
-        }  
-    ],  
-    "test": True,  
-    "aspect_ratio": "16:9",  
-    "dimension": {
-        "width": 1280,
-        "height": 720
-    },  
-}
+def generate_video(text: str):
 
-res = requests.post(url, headers=headers, json=data)
+    data = {  
+        "video_inputs": [
+            {  
+                "character": {  
+                    "type": "avatar",
+                    "avatar_id": os.getenv("AVATAR_ID_HEYGEN"),
+                    "avatar_style": "normal",  
+                },  
+                "voice": {
+                    "type": "text",
+                    "input_text": text,
+                    "voice_id": os.getenv("VOICE_ID_HEYGEN"),
+                    "language": "Portuguese (Brazil)"
+                },
+                "background": {
+                    "type": "color",
+                    "value": "#008000"
+                }
+            }  
+        ],  
+        "test": False,  
+        "aspect_ratio": "16:9",  
+        "dimension": {
+            "width": 1280,
+            "height": 720
+        },
+    }
 
-print(res.json())
+    res = requests.post(url, headers=headers, json=data)
+
+    print(f"Resultado: {res.json()}")
+    return res.json()['data']['video_id']

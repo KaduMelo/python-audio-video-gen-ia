@@ -6,7 +6,8 @@ client = ElevenLabs(
   api_key=os.getenv("ELEVEN_API_KEY"), # Defaults to ELEVEN_API_KEY
 )
 
-def generate_mp3(text: str, filename: str):
+def generate_mp3(text: str, name: str):
+    file_name = "{}/{}.{}".format("audios", name, "wav")
     audio = client.generate(
              text=text,
              model="eleven_multilingual_v2",
@@ -16,7 +17,7 @@ def generate_mp3(text: str, filename: str):
                      similarity_boost=0.50,
                      style=0.50
                  ),
-                 voice_id=os.getenv("VOICE_ID")
+                 voice_id=os.getenv("VOICE_ID_ELEVEN")
              ))
 
-    save(audio, filename)
+    save(audio, file_name)
