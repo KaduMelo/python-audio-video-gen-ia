@@ -1,6 +1,8 @@
 import pandas as pd
 import unidecode
 from elevenlabs_audio import generate_mp3
+from heygen_generate_video import generate_video
+from heygen_download_video import download_video 
 import os
 
 path_file = os.getenv("PATH_FILE")
@@ -11,6 +13,8 @@ if not os.path.exists('audios'):
 
 for text in df['texto'].values.tolist():
    name = unidecode.unidecode(text.split(',')[0].lower())
-   file_name = "{}/{}.{}".format("audios", name, "wav")
-   print(file_name)
-   generate_mp3(text, file_name)
+   print(name)
+   # generate_mp3(text, name)
+   video_id = generate_video(text)
+   # video_id = '0412ebc1952d4740b375c8f4c8270dc3'
+   download_video(video_id, name)
