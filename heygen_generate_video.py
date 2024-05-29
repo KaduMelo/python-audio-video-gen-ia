@@ -23,15 +23,15 @@ def generate_video(text: str):
                     "type": "text",
                     "input_text": text,
                     "voice_id": os.getenv("VOICE_ID_HEYGEN"),
-                    "language": "Portuguese (Brazil)"
+                    "language": "Portuguese (Brazil)",
+                    "speed": 0.9
                 },
                 "background": {
                     "type": "color",
                     "value": "#008000"
                 }
             }  
-        ],  
-        "test": False,  
+        ],
         "aspect_ratio": "16:9",  
         "dimension": {
             "width": 1280,
